@@ -33,6 +33,13 @@ Thumbs.db
 *.swp
 *.swo
 
+# Local utility scripts
+create_db.py
+
+# Uploaded files
+src/static/uploads/*
+!src/static/uploads/.gitkeep
+
 # PyCharm
 *.iml
 
