@@ -9,7 +9,12 @@ from src.admin_views.biome import BiomeAdminView
 from src.admin_views.question import QuestionAdminView
 from src.models import User
 from src.admin_views.base import SecureIndexView
-
+from src.endpoints.biome import biome_ns
+from src.endpoints.question import question_ns
+from src.endpoints.biome import biome_ns
+from src.endpoints.question import question_ns
+import src.endpoints.biome.biome
+import src.endpoints.question.question
 
 def create_app():
     app = Flask(__name__, template_folder='templates')
@@ -17,6 +22,10 @@ def create_app():
 
     db.init_app(app)
     login_manager.init_app(app)
+
+    api.add_namespace(biome_ns)
+    api.add_namespace(question_ns)
+
     api.init_app(app)
     admin.init_app(app, index_view=SecureIndexView())
 
