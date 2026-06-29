@@ -14,3 +14,6 @@ class Biome(BaseModel):
     next_biome = db.Column(db.Integer, db.ForeignKey('biomes.id'), nullable=True)
 
     biome_infos = db.relationship('BiomeInfo', back_populates='biome')
+
+    def __repr__(self):
+        return f'{self.name}'

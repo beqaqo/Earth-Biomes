@@ -4,6 +4,11 @@ question_ns = Namespace('question', description='Question operations')
 
 question_model = question_ns.model('Question', {
     'id': fields.Integer,
+    'question': fields.String,
+    'a': fields.String,
+    'b': fields.String,
+    'c': fields.String,
+    'd': fields.String,
 })
 
 answer_model = question_ns.model('Answer', {

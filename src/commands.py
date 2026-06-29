@@ -8,6 +8,7 @@ from src.models import User
 @with_appcontext
 def init_db_command():
     """Create database tables"""
+    db.drop_all()
     db.create_all()
     click.echo('Database initialized.')
 

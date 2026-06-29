@@ -1,7 +1,7 @@
 from flask_admin.menu import MenuLink
 from flask_admin import Admin
 from flask import Flask
-from src.ext import admin, login_manager, api, db
+from src.ext import admin, login_manager, api, db, migrate
 from src.config import Config
 from src.admin_views.base import SecureModelView
 from src.admin_views.question import QuestionAdminView
@@ -23,6 +23,8 @@ def create_app():
 
     db.init_app(app)
     login_manager.init_app(app)
+
+    migrate.init_app(app, db)
 
     api.add_namespace(biome_ns)
     api.add_namespace(question_ns)
