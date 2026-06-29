@@ -3,33 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Login</h2>
-    <form method="POST">
-        {{ form.hidden_tag() }}
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 100px;">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Admin Login</h3>
 
-        <div>
-            {{ form.username.label }}<br>
-            {{ form.username(placeholder="Enter username") }}
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-danger">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <form method="POST">
+                            {{ form.hidden_tag() }}
+
+                            <div class="form-group">
+                                {{ form.username.label(class="form-label") }}
+                                {{ form.username(class="form-control", placeholder="Enter username") }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.password.label(class="form-label") }}
+                                {{ form.password(class="form-control", placeholder="Enter password") }}
+                            </div>
+
+                            <div class="d-grid">
+                                {{ form.submit(class="btn btn-primary btn-block") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div>
-            {{ form.password.label }}<br>
-            {{ form.password(placeholder="Enter password") }}
-        </div>
-
-        <div>
-            {{ form.submit() }}
-        </div>
-
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p style="color:red;">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </form>
+    </div>
 </body>
 </html>
